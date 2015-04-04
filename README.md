@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/tadas-s/isbnjs.svg?branch=master)](https://travis-ci.org/tadas-s/isbnjs)
+
 isbnjs
 ====
 
