@@ -16,9 +16,11 @@
   "devDependencies": {
     "chai": "^2.2.0",
     "jscs": "^1.12.0",
-    "mocha": "^2.2.1"
+    "mocha": "^2.2.1",
+    "mocha-phantomjs": "^3.5.3",
+    "phantomjs": "^1.9.16"
   },
   "scripts": {
-    "test": "jscs ./isbn.js ./test/isbnjs.spec.js && mocha"
+    "test": "jscs ./isbn.js ./test/isbnjs.spec.js && mocha && mocha-phantomjs ./test/test.html"
   }
 }

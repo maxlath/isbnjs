@@ -1,19 +1,8 @@
-var expect = require('chai').expect;
+var expect = typeof require === 'function' ? require('chai').expect : window.expect;
+var ISBN = typeof require === 'function' ? require('../isbn').ISBN : window.ISBN;
 
 describe('isbn module', function() {
-  var isbn;
-
-  beforeEach(function() {
-    isbn = require('../isbn');
-  });
-
   describe('ISBN', function() {
-    var ISBN;
-
-    beforeEach(function() {
-      ISBN = isbn.ISBN;
-    });
-
     describe('.parse()', function() {
       it('returns null for invalid ISBNs', function() {
         expect(ISBN.parse('')).to.be.null;
