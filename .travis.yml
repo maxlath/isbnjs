@@ -1,11 +1,13 @@
 language: node_js
 
 node_js:
-  - "0.10"
+  - '0.10'
 
 deploy:
   provider: npm
+  email: tadas@yoyo.lt
   api_key:
-    secure: JSSWM9wANGdLRBPkVXKyCI6ZO1P84tMne3XgYj8Mw35n15n0wrHWq4Kh9R9F+bgn+fba/o0RBcYwdY3dYxsHl52hISdbTsQxg3Hu/s2t7Qxf5owjb872aaWwIVPOj9YLx6wLUOHQiUeUSrTpZ+9cjxSKtSui8ulJonYuVNilSps=
+    secure: XuE/4LOnHKVs90r2d2cY5fkC/a8cyJCjOf5ZMmq3iUSa50Dw3F7U4yQDXzs2q6e5uK2QWJcbw+elplPrbPXzD6/FrHwWRIP+rHcaj6yuPtt15GhjiRFTuydR3vblISFlWBz6SGVeggsGxL/5O34k/p3G/iNElPB11p7MRVm2xAA=
   on:
     tags: true
+    repo: tadas-s/isbnjs
