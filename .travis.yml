@@ -5,4 +5,11 @@ node_js:
 
 branches:
   only:
-    - master
+  - master
+
+deploy:
+  provider: npm
+  api_key:
+    secure: JSSWM9wANGdLRBPkVXKyCI6ZO1P84tMne3XgYj8Mw35n15n0wrHWq4Kh9R9F+bgn+fba/o0RBcYwdY3dYxsHl52hISdbTsQxg3Hu/s2t7Qxf5owjb872aaWwIVPOj9YLx6wLUOHQiUeUSrTpZ+9cjxSKtSui8ulJonYuVNilSps=
+  on:
+    tags: true
