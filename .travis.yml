@@ -7,7 +7,6 @@ deploy:
   provider: npm
   email: tadas@yoyo.lt
   api_key:
-    secure: XuE/4LOnHKVs90r2d2cY5fkC/a8cyJCjOf5ZMmq3iUSa50Dw3F7U4yQDXzs2q6e5uK2QWJcbw+elplPrbPXzD6/FrHwWRIP+rHcaj6yuPtt15GhjiRFTuydR3vblISFlWBz6SGVeggsGxL/5O34k/p3G/iNElPB11p7MRVm2xAA=
+    secure: SbPn9NqQPT4Ki6BVknrbZVK2LdyoH5MNXaj2WVHamu/Fh2CHKcCXSvCw/0Ba6yWtei3IhEtCxsuy+jhkyoAoZvS19/kEb+3K1yXAVw9uMiM0F2wTZoA5mLzBvpYMm4SF3jlrsOsgh2yQktUSV6j/Wy5vGLiplbMPn2KIufSH4R8=
   on:
     tags: true
-    repo: tadas-s/isbnjs
