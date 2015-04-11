@@ -1,9 +1,13 @@
 {
-  "author": "Hetappi <hetappi.pm@gmail.com> (http://twitter.com/#!/hetappi)",
+  "author": "Hetappi <hetappi.pm@gmail.com>",
+  "contributors": [
+    "Tadas S. <tadas@yoyo.lt>"
+  ],
   "name": "isbn2",
   "description": "ISBN parsing, validation, and formatting utilities",
-  "version": "0.1.1",
-  "homepage": "http://isbnjs.googlecode.com",
+  "version": "0.1.2",
+  "license": "MIT",
+  "homepage": "https://github.com/tadas-s/isbnjs",
   "repository": {
     "type": "git",
     "url": "git://github.com/tadas-s/isbnjs.git"
