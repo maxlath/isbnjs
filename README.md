@@ -1,20 +1,18 @@
 [![Build Status](https://travis-ci.org/tadas-s/isbnjs.svg?branch=master)](https://travis-ci.org/tadas-s/isbnjs)
 
-isbnjs
-====
+isbn2
+=====
 
-An ISBN JavaScript Library
+An ISBN JavaScript Library.
 
-    npm install isbn
+Please note that this is a fork of [isbn](https://www.npmjs.com/package/isbn) package which was forked from the
+original [isbnjs](https://code.google.com/p/isbnjs/) project on Google Code.
 
-    ender build isbn
-
-    var ISBN = require('isbn').ISBN;
+    npm install isbn2
 
 Examples
-====
-
-[ISBN Parser Example](http://coolaj86.github.com/isbnjs/)
+========
+    var ISBN = require('isbn2').ISBN;
 
     var isbn10a = ISBN.parse('4873113369');
     isbn10a.isIsbn10();                       // true
