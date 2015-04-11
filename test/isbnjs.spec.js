@@ -46,7 +46,7 @@ describe('isbn module', function() {
           });
 
           it('includes group name', function() {
-            expect(isbn.codes.groupname).to.eq('English speaking area');
+            expect(isbn.codes.groupname).to.eq('English language');
           });
 
           it('includes publisher id', function() {
@@ -105,7 +105,7 @@ describe('isbn module', function() {
           });
 
           it('includes group name', function() {
-            expect(isbn.codes.groupname).to.eq('German speaking area');
+            expect(isbn.codes.groupname).to.eq('German language');
           });
 
           it('includes publisher id', function() {
