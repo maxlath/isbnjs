@@ -9,6 +9,15 @@ Please note that this is a fork of [isbn](https://www.npmjs.com/package/isbn) pa
 original [isbnjs](https://code.google.com/p/isbnjs/) project on Google Code.
 
     npm install isbn2
+    
+Test Suite
+==========
+
+To run the lint/test suite use:
+
+```
+npm run test
+```
 
 Examples
 ========
