@@ -74,58 +74,84 @@ describe('isbn module', function() {
       describe('given an ISBN13', function() {
         var isbn;
 
-        beforeEach(function() {
-          isbn = ISBN.parse('978-3-642-38745-6');
+        describe('with prefix 978', function() {
+          beforeEach(function() {
+            isbn = ISBN.parse('978-3-642-38745-6');
+          });
+
+          it('detects ISBN standard', function() {
+            expect(isbn.isIsbn10()).to.be.false;
+            expect(isbn.isIsbn13()).to.be.true;
+          });
+
+          it('converts isbn to ISBN10', function() {
+            expect(isbn.asIsbn10()).to.eq('3642387454');
+          });
+
+          it('converts isbn to hyphenated ISBN10', function() {
+            expect(isbn.asIsbn10(true)).to.eq('3-642-38745-4');
+          });
+
+          describe('.codes object', function() {
+            it('includes source', function() {
+              expect(isbn.codes.source).to.eq('978-3-642-38745-6');
+            });
+
+            it('includes prefix', function() {
+              expect(isbn.codes.prefix).to.eq('978');
+            });
+
+            it('includes group id', function() {
+              expect(isbn.codes.group).to.eq('3');
+            });
+
+            it('includes group name', function() {
+              expect(isbn.codes.groupname).to.eq('German language');
+            });
+
+            it('includes publisher id', function() {
+              expect(isbn.codes.publisher).to.eq('642');
+            });
+
+            it('includes article id', function() {
+              expect(isbn.codes.article).to.eq('38745');
+            });
+
+            it('includes check digits for ISBN10/13', function() {
+              expect(isbn.codes.check10).to.eq('4');
+              expect(isbn.codes.check13).to.eq('6');
+            });
+
+            it('includes plain and hyphenated versions of ISBN10/13', function() {
+              expect(isbn.codes.isbn10).to.eq('3642387454');
+              expect(isbn.codes.isbn10h).to.eq('3-642-38745-4');
+              expect(isbn.codes.isbn13).to.eq('9783642387456');
+              expect(isbn.codes.isbn13h).to.eq('978-3-642-38745-6');
+            });
+          });
         });
 
-        it('detects ISBN standard', function() {
-          expect(isbn.isIsbn10()).to.be.false;
-          expect(isbn.isIsbn13()).to.be.true;
-        });
-
-        it('converts isbn to ISBN10', function() {
-          expect(isbn.asIsbn10()).to.eq('3642387454');
-        });
-
-        it('converts isbn to hyphenated ISBN10', function() {
-          expect(isbn.asIsbn10(true)).to.eq('3-642-38745-4');
-        });
-
-        describe('.codes object', function() {
-          it('includes source', function() {
-            expect(isbn.codes.source).to.eq('978-3-642-38745-6');
+        describe('with prefix 979', function() {
+          beforeEach(function() {
+            isbn = ISBN.parse('9791091146135');
           });
 
-          it('does not include prefix', function() {
-            expect(isbn.codes.prefix).to.eq('978');
+          it('does not try to "map" it to ISBN10', function() {
+            expect(isbn.asIsbn10()).to.be.null;
           });
 
-          it('includes group id', function() {
-            expect(isbn.codes.group).to.eq('3');
-          });
+          describe('.codes object', function() {
+            it('includes prefix', function() {
+              expect(isbn.codes.prefix).to.eq('979');
+            });
 
-          it('includes group name', function() {
-            expect(isbn.codes.groupname).to.eq('German language');
-          });
+            it('includes group id', function() {
+              expect(isbn.codes.group).to.eq('10');
+            });
 
-          it('includes publisher id', function() {
-            expect(isbn.codes.publisher).to.eq('642');
-          });
-
-          it('includes article id', function() {
-            expect(isbn.codes.article).to.eq('38745');
-          });
-
-          it('includes check digits for ISBN10/13', function() {
-            expect(isbn.codes.check10).to.eq('4');
-            expect(isbn.codes.check13).to.eq('6');
-          });
-
-          it('includes plain and hyphenated versions of ISBN10/13', function() {
-            expect(isbn.codes.isbn10).to.eq('3642387454');
-            expect(isbn.codes.isbn10h).to.eq('3-642-38745-4');
-            expect(isbn.codes.isbn13).to.eq('9783642387456');
-            expect(isbn.codes.isbn13h).to.eq('978-3-642-38745-6');
+            it('includes group name', function() {
+              expect(isbn.codes.groupname).to.eq('France');
+            });
           });
         });
       });
