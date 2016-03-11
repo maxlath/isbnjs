@@ -174,6 +174,7 @@ describe('isbn module', function() {
 
       it('hyphenates ISBN13s', function() {
         expect(ISBN.hyphenate('9784873113364')).to.eq('978-4-87311-336-4')
+        expect(ISBN.hyphenate('9791091146135')).to.eq('979-10-91146-13-5')
       });
 
       it('does not refuse hyphenated ISBNs', function() {
