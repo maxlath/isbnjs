@@ -5464,7 +5464,7 @@
             val.match(/^(978|979)(\d{9}[\dX]$)/) ?
               this.fill(
                 this.merge({source: val, isValid: true, isIsbn10: false, isIsbn13: true, prefix: RegExp.$1},
-                  this.split(RegExp.$2))) :
+                  this.split(RegExp.$1 + RegExp.$2))) :
               val.length === 17 && val.match(/^(978|979)-(\d+)-(\d+)-(\d+)-([\dX])$/) ?
                 this.fill({
                   source: val, isValid: true, isIsbn10: false, isIsbn13: true, prefix: RegExp.$1, group: RegExp.$2,
@@ -5480,24 +5480,27 @@
     },
 
     split: function(isbn) {
-      return (
-        !isbn ?
-          null :
-          isbn.length === 13 ?
-            this.merge(this.split(isbn.substr(3)), {prefix: isbn.substr(0, 3)}) :
-            isbn.length === 10 ?
-              this.splitToObject(isbn) :
-              null);
+      if (isbn) {
+        if (isbn.length === 10) {
+          isbn = '978' + isbn;
+        }
+
+        if (isbn.length === 13) {
+          return this.splitToObject(isbn);
+        }
+      }
+
+      return null;
     },
 
-    splitToArray: function(isbn10) {
+    splitToArray: function(isbn13) {
       var rec;
       var key;
       var rest;
       var i;
       var m;
 
-      rec = this.getGroupRecord(isbn10);
+      rec = this.getGroupRecord(isbn13);
       if (!rec) {
         return null;
       }
@@ -5513,8 +5516,8 @@
       return null;
     },
 
-    splitToObject: function(isbn10) {
-      var a = this.splitToArray(isbn10);
+    splitToObject: function(isbn13) {
+      var a = this.splitToArray(isbn13);
 
       if (!a || a.length !== 4) {
         return null;
@@ -5570,11 +5573,11 @@
       return codes;
     },
 
-    getGroupRecord: function(isbn10) {
+    getGroupRecord: function(isbn13) {
       var key;
       for (key in this.groups) {
-        if (isbn10.match('^' + key + '(.+)')) {
-          return {group: key, record: this.groups[key], rest: RegExp.$1};
+        if (isbn13.match('^' + key.replace('-', '') + '(.+)')) {
+          return {group: key.split('-')[1], record: this.groups[key], rest: RegExp.$1};
         }
       }
 
