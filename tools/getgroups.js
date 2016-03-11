@@ -56,15 +56,18 @@ request.post('https://www.isbn-international.org/?q=bl_proxy/GetRangeInformation
             groups[groupKey] = group;
           }
 
-          // Stringify object
-          const content = JSON.stringify(groups, null, 2);
+          // Stringify object & format string
+          const content = JSON.stringify(groups, null, 2)
+            .replace(/'/g,'\\\'') // replace ' with \'
+            .replace(/"/g,'\'') // replace " with '
+            .replace(/'(name|ranges)'/g,'$1'); // replace 'name' with name
 
           // Write file
-          fs.writeFile('groups.json', content, (err) => {
+          fs.writeFile('groups.js', content, (err) => {
             if (err) {
               throw err;
             }
-            process.stdout.write('File saved: groups.json\n');
+            process.stdout.write('File saved: groups.js\n');
           });
         });
       });
