@@ -27,6 +27,7 @@
     "xml2js": "^0.4.16"
   },
   "scripts": {
-    "test": "jscs ./isbn.js ./test/isbnjs.spec.js && mocha && mocha-phantomjs ./test/test.html"
+    "test": "jscs ./isbn.js ./test/isbnjs.spec.js && mocha && mocha-phantomjs ./test/test.html",
+    "get-groups": "node tools/getgroups.js"
   }
 }
