@@ -22,9 +22,12 @@
     "jscs": "^2.4.0",
     "mocha": "^2.3.3",
     "mocha-phantomjs": "^4.0.1",
-    "phantomjs": "^1.9.18"
+    "phantomjs": "^1.9.18",
+    "request": "^2.69.0",
+    "xml2js": "^0.4.16"
   },
   "scripts": {
-    "test": "jscs ./isbn.js ./test/isbnjs.spec.js && mocha && mocha-phantomjs ./test/test.html"
+    "test": "jscs ./isbn.js ./test/isbnjs.spec.js && mocha && mocha-phantomjs ./test/test.html",
+    "get-groups": "node tools/getgroups.js"
   }
 }

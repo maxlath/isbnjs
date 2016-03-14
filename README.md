@@ -19,6 +19,18 @@ To run the lint/test suite use:
 npm run test
 ```
 
+Update Groups
+=============
+
+To get the latest ISBN groups from [isbn-international.org], use:
+
+```
+npm run get-groups
+```
+
+Results will be saved as a JavaScript object in a `groups.js` file that can
+used to update the `isbn.js` 
+
 Examples
 ========
     var ISBN = require('isbn2').ISBN;
