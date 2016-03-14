@@ -29,5 +29,6 @@
   "scripts": {
     "test": "jscs ./isbn.js ./test/isbnjs.spec.js && mocha && mocha-phantomjs ./test/test.html",
     "get-groups": "node tools/getgroups.js"
-  }
+  },
+  "tonicExample": "var ISBN = require('isbn2').ISBN;\n\nISBN.parse('9780552997041').codes;"
 }
