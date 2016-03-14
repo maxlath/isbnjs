@@ -5417,11 +5417,11 @@
     },
 
     asIsbn10: function(hyphen) {
-      return this.isValid() ? hyphen ? this.codes.isbn10h : this.codes.isbn10 : null;
+      return this.isValid() ? hyphen ? (this.codes.isbn10h || null) : (this.codes.isbn10 || null) : null;
     },
 
     asIsbn13: function(hyphen) {
-      return this.isValid() ? hyphen ? this.codes.isbn13h : this.codes.isbn13 : null;
+      return this.isValid() ? hyphen ? (this.codes.isbn13h || null) : (this.codes.isbn13 || null) : null;
     },
 
     initialize: function(val, groups) {
