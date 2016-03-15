@@ -2,7 +2,7 @@
   'use strict';
 
   var ISBN = {
-    VERSION: '0.1.6',
+    VERSION: '0.1.7',
     GROUPS: {
       '978-0': {
         name: 'English language',
