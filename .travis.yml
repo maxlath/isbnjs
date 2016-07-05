@@ -1,5 +1,4 @@
 language: node_js
-
 node_js:
   - '0.10'
   - '0.12'
@@ -11,6 +10,6 @@ deploy:
   provider: npm
   email: tadas@yoyo.lt
   api_key:
-    secure: SbPn9NqQPT4Ki6BVknrbZVK2LdyoH5MNXaj2WVHamu/Fh2CHKcCXSvCw/0Ba6yWtei3IhEtCxsuy+jhkyoAoZvS19/kEb+3K1yXAVw9uMiM0F2wTZoA5mLzBvpYMm4SF3jlrsOsgh2yQktUSV6j/Wy5vGLiplbMPn2KIufSH4R8=
+    secure: Ki5VxOx3PmoH3decxXHV+I26ppyB+WekKw7zioD31ubDv8/Bo2A06YCbmQg+1LuX4LN4/I2EfwrvpsIaDqQv1r4zpHMydJ1BG0sDw5aIjlibMUlov3n4lnwYGuRyhaWzmd/DQkP+UbIpJ67W+L3sI3jaxz8UC11HpPWINmyLHfk=
   on:
     tags: true
