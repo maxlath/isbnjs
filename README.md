@@ -1,7 +1,6 @@
-[![Build Status](https://travis-ci.org/tadas-s/isbnjs.svg?branch=master)](https://travis-ci.org/tadas-s/isbnjs)
-
 isbn2
 =====
+[![Node](https://img.shields.io/badge/node->=v6.4.0-brightgreen.svg)](http://nodejs.org)
 
 An ISBN JavaScript Library.
 

@@ -8,10 +8,10 @@
   "description": "ISBN parsing, validation, and formatting utilities",
   "version": "0.1.8",
   "license": "MIT",
-  "homepage": "https://github.com/tadas-s/isbnjs",
+  "homepage": "https://github.com/maxlath/isbnjs",
   "repository": {
     "type": "git",
-    "url": "git://github.com/tadas-s/isbnjs.git"
+    "url": "git://github.com/maxlath/isbnjs.git"
   },
   "main": "./lib/parse.js",
   "engines": {
