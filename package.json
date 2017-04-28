@@ -1,7 +1,8 @@
 {
   "author": "Hetappi <hetappi.pm@gmail.com>",
   "contributors": [
-    "Tadas S. <tadas@yoyo.lt>"
+    "Tadas S. <tadas@yoyo.lt>",
+    "Maxime L. <k@maxlath.eu>"
   ],
   "name": "isbn2",
   "description": "ISBN parsing, validation, and formatting utilities",
@@ -12,23 +13,35 @@
     "type": "git",
     "url": "git://github.com/tadas-s/isbnjs.git"
   },
-  "main": "isbn.js",
+  "main": "./lib/parse.js",
   "engines": {
-    "node": ">= 0.0.1"
+    "node": ">= 6.4.0"
   },
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "chai": "^3.4.0",
-    "jscs": "^2.4.0",
     "mocha": "^2.3.3",
     "mocha-phantomjs": "^4.0.1",
     "phantomjs": "^1.9.18",
     "request": "^2.69.0",
+    "standard": "^10.0.2",
     "xml2js": "^0.4.16"
   },
   "scripts": {
-    "test": "jscs ./isbn.js ./test/isbnjs.spec.js && mocha && mocha-phantomjs ./test/test.html",
+    "test": "npm run lint && mocha",
+    "lint": "standard",
     "get-groups": "node tools/getgroups.js"
   },
-  "tonicExample": "var ISBN = require('isbn2').ISBN;\n\nISBN.parse('9780552997041').codes;"
+  "standard": {
+    "ignore": [
+      "dist"
+    ],
+    "globals": [
+      "it",
+      "describe",
+      "beforeEach"
+    ]
+  },
+  "tonicExample": "var ISBN = require('isbn2');\n\nISBN.parse('9780552997041');"
 }
