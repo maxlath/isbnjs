@@ -29,7 +29,7 @@
     "xml2js": "^0.4.16"
   },
   "scripts": {
-    "test": "npm run lint && mocha",
+    "test": "mocha",
     "lint": "standard",
     "get-groups": "node tools/getgroups.js"
   },

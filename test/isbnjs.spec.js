@@ -5,6 +5,10 @@ const ISBN = require('../isbn')
 describe('isbn module', function () {
   describe('ISBN', function () {
     describe('parse', function () {
+      it('returns an object with all the data when valid', function () {
+        expect(ISBN.parse('9791091146135').isValid).to.be.true
+      })
+
       it('returns null for invalid ISBNs', function () {
         expect(ISBN.parse('')).to.be.null
         expect(ISBN.parse('0-00-000-0')).to.be.null
