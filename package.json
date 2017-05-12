@@ -14,6 +14,9 @@
     "url": "git://github.com/maxlath/isbnjs.git"
   },
   "main": "./lib/parse.js",
+  "bin": {
+    "isbn-data": "./bin/isbn_data"
+  },
   "engines": {
     "node": ">= 6.4.0"
   },
