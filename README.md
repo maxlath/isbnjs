@@ -1,39 +1,37 @@
-isbn2
-=====
+# isbn
+
 [![Node](https://img.shields.io/badge/node->=v6.4.0-brightgreen.svg)](http://nodejs.org)
 
 An ISBN JavaScript Library.
 
-Please note that this is a fork of [isbn2](https://www.npmjs.com/package/isbn2) package which was forked
-[isbn](https://www.npmjs.com/package/isbn) which was forked from the
-original [isbnjs](https://code.google.com/p/isbnjs/) project on Google Code.
+Please note that this is a fork of [isbn2](https://www.npmjs.com/package/isbn2), which was a fork of [isbn](https://www.npmjs.com/package/isbn) package which was forked from the original [isbnjs](https://code.google.com/p/isbnjs/) project on Google Code.
 
-    npm install https://github.com/maxlath/isbnjs
+```sh
+npm install https://github.com/wikimedia/isbn
+```
 
 Motivation to fork: modularizing and updating the code for ES6, in a class-less way
 
-Test Suite
-==========
+## Test Suite
 
 To run the lint/test suite use:
 
-```
-npm run test
+```sh
+npm test
 ```
 
-Update Groups
-=============
+## Update Groups
 
 To get the latest ISBN groups from [isbn-international.org], use:
 
-```
+```sh
 npm run get-groups
 ```
 
 Results will be saved as a JavaScript object in `./groups.js`
 
-Examples
-========
+## Examples
+
 
 ```javascript
 var ISBN = require('isbn2')
