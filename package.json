@@ -31,7 +31,7 @@
   "scripts": {
     "test": "mocha",
     "lint": "standard",
-    "get-groups": "node tools/getgroups.js"
+    "update-groups": "node tools/update_groups.js"
   },
   "standard": {
     "ignore": [
