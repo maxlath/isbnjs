@@ -24,8 +24,6 @@
   "devDependencies": {
     "chai": "^3.4.0",
     "mocha": "^2.3.3",
-    "mocha-phantomjs": "^4.0.1",
-    "phantomjs": "^1.9.18",
     "request": "^2.69.0",
     "standard": "^10.0.2",
     "xml2js": "^0.4.16"
