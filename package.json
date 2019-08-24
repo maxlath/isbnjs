@@ -41,6 +41,5 @@
       "it",
       "describe"
     ]
-  },
-  "tonicExample": "var ISBN = require('isbn2');\n\nISBN.parse('9780552997041');"
+  }
 }
