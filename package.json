@@ -22,9 +22,9 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "chai": "^3.4.0",
     "mocha": "^2.3.3",
     "request": "^2.69.0",
+    "should": "^13.2.3",
     "standard": "^10.0.2",
     "xml2js": "^0.4.16"
   },
@@ -39,8 +39,7 @@
     ],
     "globals": [
       "it",
-      "describe",
-      "beforeEach"
+      "describe"
     ]
   },
   "tonicExample": "var ISBN = require('isbn2');\n\nISBN.parse('9780552997041');"

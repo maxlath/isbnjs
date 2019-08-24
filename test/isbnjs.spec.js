@@ -1,204 +1,229 @@
-/* eslint no-unused-expressions: 0 */
-const { expect } = require('chai')
+const should = require('should')
 const ISBN = require('../isbn')
 
-describe('isbn module', function () {
-  describe('ISBN', function () {
-    describe('parse', function () {
-      it('returns an object with all the data when valid', function () {
-        expect(ISBN.parse('9791091146135').isValid).to.be.true
+describe('isbn module', () => {
+  describe('ISBN', () => {
+    describe('parse', () => {
+      it('returns an object with all the data when valid', done => {
+        ISBN.parse('9791091146135').isValid.should.be.true()
+        done()
       })
 
-      it('returns null for invalid ISBNs', function () {
-        expect(ISBN.parse('')).to.be.null
-        expect(ISBN.parse('0-00-000-0')).to.be.null
-        expect(ISBN.parse('0-00000-0000-0')).to.be.null
-        expect(ISBN.parse('00000000000000000')).to.be.null
-        expect(ISBN.parse('9788184890261')).to.be.null
+      it('returns null for invalid ISBNs', done => {
+        should(ISBN.parse('')).not.be.ok()
+        should(ISBN.parse('0-00-000-0')).not.be.ok()
+        should(ISBN.parse('0-00000-0000-0')).not.be.ok()
+        should(ISBN.parse('00000000000000000')).not.be.ok()
+        should(ISBN.parse('9788184890261')).not.be.ok()
+        done()
       })
 
-      describe('given an ISBN10', function () {
-        var isbn
+      describe('given an ISBN10', () => {
+        const isbnData = ISBN.parse('0-7356-1967-0')
 
-        beforeEach(function () {
-          isbn = ISBN.parse('0-7356-1967-0')
+        it('detects ISBN standard', done => {
+          isbnData.isIsbn10.should.be.true()
+          isbnData.isIsbn13.should.be.false()
+          done()
         })
 
-        it('detects ISBN standard', function () {
-          expect(isbn.isIsbn10).to.be.true
-          expect(isbn.isIsbn13).to.be.false
-        })
-
-        describe('.codes object', function () {
-          it('includes source', function () {
-            expect(isbn.source).to.eq('0-7356-1967-0')
+        describe('.codes object', () => {
+          it('includes source', done => {
+            isbnData.source.should.equal('0-7356-1967-0')
+            done()
           })
 
-          it('does not include prefix', function () {
-            expect(isbn.prefix).to.be.undefied
+          it('does not include prefix', done => {
+            should(isbnData.prefix).not.be.ok()
+            done()
           })
 
-          it('includes group id', function () {
-            expect(isbn.group).to.eq('0')
+          it('includes group id', done => {
+            isbnData.group.should.equal('0')
+            done()
           })
 
-          it('includes group name', function () {
-            expect(isbn.groupname).to.eq('English language')
+          it('includes group name', done => {
+            isbnData.groupname.should.equal('English language')
+            done()
           })
 
-          it('includes publisher id', function () {
-            expect(isbn.publisher).to.eq('7356')
+          it('includes publisher id', done => {
+            isbnData.publisher.should.equal('7356')
+            done()
           })
 
-          it('includes article id', function () {
-            expect(isbn.article).to.eq('1967')
+          it('includes article id', done => {
+            isbnData.article.should.equal('1967')
+            done()
           })
 
-          it('includes check digits for ISBN10/13', function () {
-            expect(isbn.check10).to.eq('0')
-            expect(isbn.check13).to.eq('8')
+          it('includes check digits for ISBN10/13', done => {
+            isbnData.check10.should.equal('0')
+            isbnData.check13.should.equal('8')
+            done()
           })
 
-          it('includes plain and hyphenated versions of ISBN10/13', function () {
-            expect(isbn.isbn10).to.eq('0735619670')
-            expect(isbn.isbn10h).to.eq('0-7356-1967-0')
-            expect(isbn.isbn13).to.eq('9780735619678')
-            expect(isbn.isbn13h).to.eq('978-0-7356-1967-8')
+          it('includes plain and hyphenated versions of ISBN10/13', done => {
+            isbnData.isbn10.should.equal('0735619670')
+            isbnData.isbn10h.should.equal('0-7356-1967-0')
+            isbnData.isbn13.should.equal('9780735619678')
+            isbnData.isbn13h.should.equal('978-0-7356-1967-8')
+            done()
           })
         })
       })
 
-      describe('given an ISBN13', function () {
-        var isbn
+      describe('given an ISBN13', () => {
+        const isbnData = ISBN.parse('978-3-642-38745-6')
 
-        describe('with prefix 978', function () {
-          beforeEach(function () {
-            isbn = ISBN.parse('978-3-642-38745-6')
+        describe('with prefix 978', () => {
+          it('detects ISBN standard', done => {
+            isbnData.isIsbn10.should.be.false()
+            isbnData.isIsbn13.should.be.true()
+            done()
           })
 
-          it('detects ISBN standard', function () {
-            expect(isbn.isIsbn10).to.be.false
-            expect(isbn.isIsbn13).to.be.true
-          })
-
-          describe('.codes object', function () {
-            it('includes source', function () {
-              expect(isbn.source).to.eq('978-3-642-38745-6')
+          describe('.codes object', () => {
+            it('includes source', done => {
+              isbnData.source.should.equal('978-3-642-38745-6')
+              done()
             })
 
-            it('includes prefix', function () {
-              expect(isbn.prefix).to.eq('978')
+            it('includes prefix', done => {
+              isbnData.prefix.should.equal('978')
+              done()
             })
 
-            it('includes group id', function () {
-              expect(isbn.group).to.eq('3')
+            it('includes group id', done => {
+              isbnData.group.should.equal('3')
+              done()
             })
 
-            it('includes group name', function () {
-              expect(isbn.groupname).to.eq('German language')
+            it('includes group name', done => {
+              isbnData.groupname.should.equal('German language')
+              done()
             })
 
-            it('includes publisher id', function () {
-              expect(isbn.publisher).to.eq('642')
+            it('includes publisher id', done => {
+              isbnData.publisher.should.equal('642')
+              done()
             })
 
-            it('includes article id', function () {
-              expect(isbn.article).to.eq('38745')
+            it('includes article id', done => {
+              isbnData.article.should.equal('38745')
+              done()
             })
 
-            it('includes check digits for ISBN10/13', function () {
-              expect(isbn.check10).to.eq('4')
-              expect(isbn.check13).to.eq('6')
+            it('includes check digits for ISBN10/13', done => {
+              isbnData.check10.should.equal('4')
+              isbnData.check13.should.equal('6')
+              done()
             })
 
-            it('includes plain and hyphenated versions of ISBN10/13', function () {
-              expect(isbn.isbn10).to.eq('3642387454')
-              expect(isbn.isbn10h).to.eq('3-642-38745-4')
-              expect(isbn.isbn13).to.eq('9783642387456')
-              expect(isbn.isbn13h).to.eq('978-3-642-38745-6')
+            it('includes plain and hyphenated versions of ISBN10/13', done => {
+              isbnData.isbn10.should.equal('3642387454')
+              isbnData.isbn10h.should.equal('3-642-38745-4')
+              isbnData.isbn13.should.equal('9783642387456')
+              isbnData.isbn13h.should.equal('978-3-642-38745-6')
+              done()
             })
           })
         })
 
-        describe('with prefix 979', function () {
-          it('does not try to "map" it to ISBN10', function () {
-            expect(ISBN.asIsbn10('9791091146135')).to.be.null
+        describe('with prefix 979', () => {
+          it('does not try to "map" it to ISBN10', done => {
+            should(ISBN.asIsbn10('9791091146135')).not.be.ok()
+            done()
           })
 
-          describe('.codes object', function () {
-            beforeEach(function () {
-              isbn = ISBN.parse('9791091146135')
-            })
-            it('includes prefix', function () {
-              expect(isbn.prefix).to.eq('979')
-            })
-
-            it('includes group id', function () {
-              expect(isbn.group).to.eq('10')
+          describe('.codes object', () => {
+            const isbnData = ISBN.parse('9791091146135')
+            it('includes prefix', done => {
+              isbnData.prefix.should.equal('979')
+              done()
             })
 
-            it('includes group name', function () {
-              expect(isbn.groupname).to.eq('France')
+            it('includes group id', done => {
+              isbnData.group.should.equal('10')
+              done()
+            })
+
+            it('includes group name', done => {
+              isbnData.groupname.should.equal('France')
+              done()
             })
           })
         })
       })
     })
 
-    describe('.asIsbn13()', function () {
-      it('converts ISBN10 to ISBN13', function () {
-        expect(ISBN.asIsbn13('4-87311-336-9')).to.eq('9784873113364')
+    describe('.asIsbn13()', () => {
+      it('converts ISBN10 to ISBN13', done => {
+        ISBN.asIsbn13('4-87311-336-9').should.equal('9784873113364')
+        done()
       })
 
-      it('accepts ISBN13 as well', function () {
-        expect(ISBN.asIsbn13('978-4-87311-336-4')).to.eq('9784873113364')
+      it('accepts ISBN13 as well', done => {
+        ISBN.asIsbn13('978-4-87311-336-4').should.equal('9784873113364')
+        done()
       })
 
-      it('hyphenates result', function () {
-        expect(ISBN.asIsbn13('4-87311-336-9', true)).to.eq('978-4-87311-336-4')
+      it('hyphenates result', done => {
+        ISBN.asIsbn13('4-87311-336-9', true).should.equal('978-4-87311-336-4')
+        done()
       })
 
-      it('returns null if ISBN is invalid', function () {
-        expect(ISBN.asIsbn10('4873113361')).to.be.null
-      })
-    })
-
-    describe('.asIsbn10()', function () {
-      it('converts ISBN13 to ISBN10', function () {
-        expect(ISBN.asIsbn10('978-4-87311-336-4')).to.eq('4873113369')
-      })
-
-      it('accepts ISBN10 as well', function () {
-        expect(ISBN.asIsbn10('4-87311-336-9')).to.eq('4873113369')
-      })
-
-      it('hyphenates result', function () {
-        expect(ISBN.asIsbn10('978-4-87311-336-4', true)).to.eq('4-87311-336-9')
-      })
-
-      it('returns null if ISBN is invalid', function () {
-        expect(ISBN.asIsbn10('9790000000000')).to.be.null
+      it('returns null if ISBN is invalid', done => {
+        should(ISBN.asIsbn10('4873113361')).not.be.ok()
+        done()
       })
     })
 
-    describe('.hyphenate()', function () {
-      it('hyphenates ISBN10s', function () {
-        expect(ISBN.hyphenate('4873113369')).to.eq('4-87311-336-9')
+    describe('.asIsbn10()', () => {
+      it('converts ISBN13 to ISBN10', done => {
+        ISBN.asIsbn10('978-4-87311-336-4').should.equal('4873113369')
+        done()
       })
 
-      it('hyphenates ISBN13s', function () {
-        expect(ISBN.hyphenate('9784873113364')).to.eq('978-4-87311-336-4')
-        expect(ISBN.hyphenate('9791091146135')).to.eq('979-10-91146-13-5')
+      it('accepts ISBN10 as well', done => {
+        ISBN.asIsbn10('4-87311-336-9').should.equal('4873113369')
+        done()
       })
 
-      it('does not refuse hyphenated ISBNs', function () {
-        expect(ISBN.hyphenate('4-87311-336-9')).to.eq('4-87311-336-9')
-        expect(ISBN.hyphenate('978-4-87311-336-4')).to.eq('978-4-87311-336-4')
+      it('hyphenates result', done => {
+        ISBN.asIsbn10('978-4-87311-336-4', true).should.equal('4-87311-336-9')
+        done()
       })
 
-      it('returns null for non-valid ISBN', function () {
-        expect(ISBN.hyphenate('4873113360')).to.be.null
-        expect(ISBN.hyphenate('9784873113360')).to.be.null
+      it('returns null if ISBN is invalid', done => {
+        should(ISBN.asIsbn10('9790000000000')).not.be.ok()
+        done()
+      })
+    })
+
+    describe('.hyphenate()', () => {
+      it('hyphenates ISBN10s', done => {
+        ISBN.hyphenate('4873113369').should.equal('4-87311-336-9')
+        done()
+      })
+
+      it('hyphenates ISBN13s', done => {
+        ISBN.hyphenate('9784873113364').should.equal('978-4-87311-336-4')
+        ISBN.hyphenate('9791091146135').should.equal('979-10-91146-13-5')
+        done()
+      })
+
+      it('does not refuse hyphenated ISBNs', done => {
+        ISBN.hyphenate('4-87311-336-9').should.equal('4-87311-336-9')
+        ISBN.hyphenate('978-4-87311-336-4').should.equal('978-4-87311-336-4')
+        done()
+      })
+
+      it('returns null for non-valid ISBN', done => {
+        should(ISBN.hyphenate('4873113360')).not.be.ok()
+        should(ISBN.hyphenate('9784873113360')).not.be.ok()
+        done()
       })
     })
   })
