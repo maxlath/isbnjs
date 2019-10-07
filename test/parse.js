@@ -4,6 +4,7 @@ const { parse } = require('../isbn')
 describe('parse', () => {
   it('returns an object with all the data when valid', done => {
     parse('9791091146135').isValid.should.be.true()
+    parse('979-1091146135').isValid.should.be.true()
     done()
   })
 
