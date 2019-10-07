@@ -1,12 +1,12 @@
 {
+  "name": "isbn3",
+  "description": "ISBN parsing, validation, and formatting utilities",
+  "version": "1.0.0",
   "author": "Hetappi <hetappi.pm@gmail.com>",
   "contributors": [
     "Tadas S. <tadas@yoyo.lt>",
     "Maxime L. <k@maxlath.eu>"
   ],
-  "name": "isbn3",
-  "description": "ISBN parsing, validation, and formatting utilities",
-  "version": "1.0.0",
   "license": "MIT",
   "homepage": "https://github.com/maxlath/isbn3",
   "repository": {
