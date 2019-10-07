@@ -13,25 +13,27 @@
     "type": "git",
     "url": "git://github.com/maxlath/isbn3.git"
   },
-  "main": "./lib/parse.js",
+  "main": "./isbn.js",
   "bin": {
     "isbn": "./bin/isbn"
+  },
+  "scripts": {
+    "test": "mocha",
+    "lint": "standard",
+    "build": "./scripts/build.sh",
+    "update-groups": "./scripts/update_groups.js"
   },
   "engines": {
     "node": ">= 6.4.0"
   },
   "dependencies": {},
   "devDependencies": {
+    "browserify": "^16.5.0",
     "mocha": "^6.2.1",
     "request": "^2.88.0",
     "should": "^13.2.3",
     "standard": "^10.0.2",
     "xml2js": "^0.4.16"
-  },
-  "scripts": {
-    "test": "mocha",
-    "lint": "standard",
-    "update-groups": "node tools/update_groups.js"
   },
   "standard": {
     "ignore": [
