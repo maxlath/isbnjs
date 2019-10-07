@@ -15,7 +15,7 @@
   },
   "main": "./lib/parse.js",
   "bin": {
-    "isbn-data": "./bin/isbn_data"
+    "isbn": "./bin/isbn"
   },
   "engines": {
     "node": ">= 6.4.0"

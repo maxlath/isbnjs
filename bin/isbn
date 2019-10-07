@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+const [ isbn ] = process.argv.slice(2)
+
+if (!isbn || isbn.length === 0) {
+  console.error('expect an isbn as unique argument')
+  process.exit(1)
+}
+
+const ISBN = require('../isbn.js')
+
+const data = ISBN.parse(isbn)
+if (data) {
+  console.log(JSON.stringify(data, null, 2))
+} else {
+  console.error('invalid ISBN')
+  process.exit(1)
+}
