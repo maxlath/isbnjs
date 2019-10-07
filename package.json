@@ -8,10 +8,10 @@
     "Maxime L. <k@maxlath.eu>"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/maxlath/isbn3",
+  "homepage": "https://github.com/inventaire/isbn3",
   "repository": {
     "type": "git",
-    "url": "git://github.com/maxlath/isbn3.git"
+    "url": "git://github.com/inventaire/isbn3.git"
   },
   "main": "./isbn.js",
   "bin": {
