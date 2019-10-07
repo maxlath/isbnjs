@@ -21,7 +21,8 @@
     "test": "mocha",
     "lint": "standard",
     "build": "./scripts/build.sh",
-    "update-groups": "./scripts/update_groups.js"
+    "update-groups": "./scripts/update_groups.js",
+    "update-toc": "npx doctoc README.md"
   },
   "engines": {
     "node": ">= 6.4.0"
