@@ -18,29 +18,27 @@
     }
   </style>
   <script type="application/javascript" src="../dist/isbn.js"></script>
+</head>
+<body>
+  <div id="title">ISBN Parser</div>
+  <div class="control">
+    ISBN: <input id="isbnInput" type="text" value="9784873113685" />
+  </div>
+  <pre id="result"></pre>
   <script type="application/javascript">
-    window.addEventListener('load', update.bind(null, '9784873113685'))
-    isbn.addEventListener('keyup', update)
+    window.addEventListener('load', function () {
+      update()
+      isbnInput.addEventListener('keyup', update)
+    })
 
-    function update (value) {
-      var isbnData = ISBN.parse(value)
+    function update () {
+      var isbnData = ISBN.parse(isbnInput.value)
       if (isbnData) {
         result.innerHTML = JSON.stringify(isbnData, null, 2)
       } else {
         result.innerHTML = 'invalid ISBN'
       }
     }
-
-    function updateFromEvent (event) {
-      update(event.target.value)
-    }
   </script>
-</head>
-<body>
-  <div id="title">ISBN Parser</div>
-  <div class="control">
-    ISBN: <input id="isbn" type="text" value="9784873113685" />
-  </div>
-  <pre id="result"></pre>
 </body>
 </html>
