@@ -25,5 +25,5 @@ module.exports = {
     return hyphen ? data.isbn10h : data.isbn10
   },
 
-  groups: require('./groups')
+  groups: require('./lib/groups')
 }
