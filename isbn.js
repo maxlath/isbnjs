@@ -23,5 +23,7 @@ module.exports = {
     // ex: 979-10-91146-13-5
     if (!data.isbn10) return null
     return hyphen ? data.isbn10h : data.isbn10
-  }
+  },
+
+  groups: require('./groups')
 }
