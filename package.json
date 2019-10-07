@@ -6,7 +6,7 @@
   ],
   "name": "isbn3",
   "description": "ISBN parsing, validation, and formatting utilities",
-  "version": "0.1.8",
+  "version": "1.0.0",
   "license": "MIT",
   "homepage": "https://github.com/maxlath/isbn3",
   "repository": {
@@ -24,7 +24,10 @@
     "update-groups": "./scripts/update_groups.js",
     "update-toc": "npx doctoc README.md"
   },
-  "files": [ "lib", "bin" ],
+  "files": [
+    "lib",
+    "bin"
+  ],
   "engines": {
     "node": ">= 6.4.0"
   },
