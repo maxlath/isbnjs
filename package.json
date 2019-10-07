@@ -24,6 +24,7 @@
     "update-groups": "./scripts/update_groups.js",
     "update-toc": "npx doctoc README.md"
   },
+  "files": [ "lib", "bin" ],
   "engines": {
     "node": ">= 6.4.0"
   },
