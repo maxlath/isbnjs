@@ -25,6 +25,7 @@
     "update-toc": "npx doctoc README.md"
   },
   "files": [
+    "isbn.js",
     "lib",
     "bin"
   ],
