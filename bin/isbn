@@ -21,11 +21,14 @@ Formats:
 - h: hyphen
 - n: no hyphen
 - 13: ISBN-13 without hyphen
-- 13h: ISBN-13 with hyphen
+- 13h: ISBN-13 with hyphen (default)
 - 10: ISBN-10 without hyphen
 - 10h: ISBN-10 with hyphen
-- prefix, group, publisher, article, check, check10, check13: output ISBN part value`)
+- prefix, group, publisher, article, check, check10, check13: output ISBN part value
+- data: output all this data as JSON`)
 }
+
+format = format || '13h'
 
 const source = isbn
 isbn = isbn.replace(/[^\dX]/g, '')
@@ -33,24 +36,22 @@ const ISBN = require('../isbn')
 const data = ISBN.parse(isbn)
 
 if (data) {
-  if (format) {
-    if (format === '13') console.log(data.isbn13)
-    else if (format === '10') console.log(data.isbn10)
-    else if (format === '13h') console.log(data.isbn13h)
-    else if (format === '10h') console.log(data.isbn10h)
-    else if (data[format]) console.log(data[format])
-    else if (format === 'h') {
-      if (data.isIsbn13) console.log(data.isbn13h)
-      else console.log(data.isbn10h)
-    }
-    else if (format === 'n') {
-      if (data.isIsbn13) console.log(data.isbn13)
-      else console.log(data.isbn10)
-    }
-    else exit(1, 'unknown format')
-  } else {
+  if (format === '13') console.log(data.isbn13)
+  else if (format === '10') console.log(data.isbn10)
+  else if (format === '13h') console.log(data.isbn13h)
+  else if (format === '10h') console.log(data.isbn10h)
+  else if (data[format]) console.log(data[format])
+  else if (format === 'h') {
+    if (data.isIsbn13) console.log(data.isbn13h)
+    else console.log(data.isbn10h)
+  } else if (format === 'n') {
+    if (data.isIsbn13) console.log(data.isbn13)
+    else console.log(data.isbn10)
+  } else if (format === 'data') {
     data.source = source
     console.log(JSON.stringify(data, null, 2))
+  } else {
+    exit(1, 'unknown format')
   }
 } else {
   exit(1, 'invalid ISBN')

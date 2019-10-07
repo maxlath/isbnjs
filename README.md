@@ -161,10 +161,11 @@ Formats:
 - h: hyphen
 - n: no hyphen
 - 13: ISBN-13 without hyphen
-- 13h: ISBN-13 with hyphen
+- 13h: ISBN-13 with hyphen (default)
 - 10: ISBN-10 without hyphen
 - 10h: ISBN-10 with hyphen
 - prefix, group, publisher, article, check, check10, check13: output ISBN part value
+- data: output all this data as JSON
 ```
 
 ## Development
