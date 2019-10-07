@@ -4,14 +4,14 @@
     "Tadas S. <tadas@yoyo.lt>",
     "Maxime L. <k@maxlath.eu>"
   ],
-  "name": "isbn2",
+  "name": "isbn3",
   "description": "ISBN parsing, validation, and formatting utilities",
   "version": "0.1.8",
   "license": "MIT",
-  "homepage": "https://github.com/wikimedia/isbn",
+  "homepage": "https://github.com/maxlath/isbn3",
   "repository": {
     "type": "git",
-    "url": "git://github.com/wikimedia/isbn.git"
+    "url": "git://github.com/maxlath/isbn3.git"
   },
   "main": "./lib/parse.js",
   "bin": {
@@ -22,8 +22,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "mocha": "^2.3.3",
-    "request": "^2.69.0",
+    "mocha": "^6.2.1",
+    "request": "^2.88.0",
     "should": "^13.2.3",
     "standard": "^10.0.2",
     "xml2js": "^0.4.16"

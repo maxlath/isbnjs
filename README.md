@@ -4,7 +4,7 @@
 
 An ISBN JavaScript Library.
 
-Please note that this is a fork of [isbn2](https://www.npmjs.com/package/isbn2), which was a fork of [isbn](https://www.npmjs.com/package/isbn) package which was forked from the original [isbnjs](https://code.google.com/p/isbnjs/) project on Google Code.
+Please note that this is a fork of [isbn3](https://www.npmjs.com/package/isbn3), which was a fork of [isbn](https://www.npmjs.com/package/isbn) package which was forked from the original [isbnjs](https://code.google.com/p/isbnjs/) project on Google Code.
 
 ```sh
 npm install https://github.com/wikimedia/isbn
@@ -34,7 +34,7 @@ Results will be saved as a JavaScript object in `./groups.js`
 
 
 ```javascript
-var ISBN = require('isbn2')
+var ISBN = require('isbn3')
 
 var isbn10a = ISBN.parse('1-933988-03-7')
 isbn10a.isIsbn10                         // true
