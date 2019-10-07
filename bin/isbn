@@ -1,17 +1,57 @@
 #!/usr/bin/env node
-const [ isbn ] = process.argv.slice(2)
+var [ isbn, format ] = process.argv.slice(2)
 
-if (!isbn || isbn.length === 0) {
-  console.error('expect an isbn as unique argument')
-  process.exit(1)
+const exit = (code, message) => {
+  if (code === 0) console.log(message)
+  else console.error(message)
+  process.exit(code)
 }
 
-const ISBN = require('../isbn.js')
+if (!isbn || isbn.length === 0) {
+  exit(0, `isbn <isbn> <format>
 
+Valid ISBN input examples:
+- 9781491574317
+- 978-1-4915-7431-7
+- 978-1491574317
+- isbn:9781491574317
+- 9781-hello-491574317
+
+Formats:
+- h: hyphen
+- n: no hyphen
+- 13: ISBN-13 without hyphen
+- 13h: ISBN-13 with hyphen
+- 10: ISBN-10 without hyphen
+- 10h: ISBN-10 with hyphen
+- prefix, group, publisher, article, check, check10, check13: output ISBN part value`)
+}
+
+const source = isbn
+isbn = isbn.replace(/[^\dX]/g, '')
+const ISBN = require('../isbn')
 const data = ISBN.parse(isbn)
+
 if (data) {
-  console.log(JSON.stringify(data, null, 2))
+  if (format) {
+    if (format === '13') console.log(data.isbn13)
+    else if (format === '10') console.log(data.isbn10)
+    else if (format === '13h') console.log(data.isbn13h)
+    else if (format === '10h') console.log(data.isbn10h)
+    else if (data[format]) console.log(data[format])
+    else if (format === 'h') {
+      if (data.isIsbn13) console.log(data.isbn13h)
+      else console.log(data.isbn10h)
+    }
+    else if (format === 'n') {
+      if (data.isIsbn13) console.log(data.isbn13)
+      else console.log(data.isbn10)
+    }
+    else exit(1, 'unknown format')
+  } else {
+    data.source = source
+    console.log(JSON.stringify(data, null, 2))
+  }
 } else {
-  console.error('invalid ISBN')
-  process.exit(1)
+  exit(1, 'invalid ISBN')
 }
