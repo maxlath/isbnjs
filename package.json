@@ -20,8 +20,9 @@
   "scripts": {
     "test": "mocha",
     "lint": "standard",
-    "build": "./scripts/build.sh",
     "update-groups": "./scripts/update_groups.js",
+    "update-gh-pages": "./scripts/update_gh_pages.sh",
+    "build-dist": "npx browserify ./isbn.js -s ISBN -o dist/isbn.js",
     "update-toc": "npx doctoc README.md"
   },
   "files": [
@@ -34,7 +35,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "browserify": "^16.5.0",
     "mocha": "^6.2.1",
     "request": "^2.88.0",
     "should": "^13.2.3",
