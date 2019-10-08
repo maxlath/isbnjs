@@ -1,4 +1,4 @@
-const should = require('should')
+require('should')
 const { groups } = require('../isbn')
 
 describe('groups', () => {

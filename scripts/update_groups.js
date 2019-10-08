@@ -63,7 +63,7 @@ const formatJsFile = groups => {
     .replace(/"/g, '\'') // replace " with '
     .replace(/'(name|ranges)'/g, '$1') // replace 'name' with name
 
-  return 'module.exports = ' + content
+  return 'module.exports = ' + content + '\n'
 }
 
 console.log('Requesting XML ranges file...')
