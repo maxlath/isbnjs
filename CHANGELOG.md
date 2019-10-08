@@ -1,6 +1,9 @@
 $# CHANGELOG
 *versions follow [SemVer](http://semver.org)*
 
+## 1.1.0 - 2019-10-08
+* Add dist files `./dist/isbn.js` and `./dist/isbn.min.js`, both being browserified ES5 versions of the module
+
 ## 1.0.0 - 2019-10-07
 Fork from [isbn2](https://www.npmjs.com/package/isbn2)
 
@@ -14,6 +17,6 @@ require('isbn3').parse('1933988037').isbn13h // => '978-1-933988-03-0'
 ```
 
 ** Added features**
-* added a [command-line interface](https://github.com/maxlath/isbnjs#CLI)
-* [expose groups data on the module object](https://github.com/maxlath/isbnjs#groups)
+* added a [command-line interface](https://github.com/inventaire/isbn3#CLI)
+* [expose groups data on the module object](https://github.com/inventaire/isbn3#groups)
 * recover common hyphenization mistake `979-1091146135`
