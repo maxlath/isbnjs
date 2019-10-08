@@ -128,6 +128,7 @@ describe('parse', () => {
 
     describe('with prefix 979', () => {
       const isbnData = parse('9791091146135')
+
       it('includes prefix', done => {
         isbnData.prefix.should.equal('979')
         done()
