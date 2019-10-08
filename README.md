@@ -8,6 +8,8 @@ Please note that this is a fork of [isbn2](https://www.npmjs.com/package/isbn2),
 
 Motivations to fork: modularizing and updating the code for ES6, in a class-less way.
 
+[Demo](http://inventaire.github.io/isbn3/)
+
 ## Summary
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
