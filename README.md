@@ -43,6 +43,13 @@ Then in your JS file:
 const ISBN = require('isbn3')
 ```
 
+Alternatively, you can call the ES5 browserified version of the module from an HTML file, which sets the module object on `window.ISBN`:
+```html
+<script type="application/javascript" src="./node_modules/dist/isbn.js"></script>
+```
+
+See `./index.html` or the [live demo](http://inventaire.github.io/isbn3/) for an example.
+
 ## Functions
 
 ### parse
