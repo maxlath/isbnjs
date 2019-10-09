@@ -12,6 +12,7 @@ const generateIsbn = (prefix, group, publisher) => {
 
 const isbns = []
 
+// Generate 2 ISBNs per known range boundaries
 for (let groupPrefix in groups) {
   const [ prefix, group ] = groupPrefix.split('-')
   const groupData = groups[groupPrefix]

@@ -6,7 +6,9 @@ An ISBN JavaScript Library.
 
 Please note that this is a fork of [isbn2](https://www.npmjs.com/package/isbn2), which was a fork of [isbn](https://www.npmjs.com/package/isbn) package which was forked from the original [isbnjs](https://code.google.com/p/isbnjs/) project on Google Code.
 
-Motivations to fork: modularizing and updating the code for ES6, in a class-less way.
+Motivations to fork:
+* modularizing and updating the code for ES6, in a class-less way.
+* improve performance (see [#benchmark])
 
 [Demo](http://inventaire.github.io/isbn3/)
 
@@ -24,6 +26,7 @@ Motivations to fork: modularizing and updating the code for ES6, in a class-less
   - [hyphenate](#hyphenate)
   - [groups](#groups)
 - [CLI](#cli)
+- [Benchmark](#benchmark)
 - [Development](#development)
   - [Test Suite](#test-suite)
   - [Update Groups](#update-groups)
@@ -176,6 +179,13 @@ Formats:
 - prefix, group, publisher, article, check, check10, check13: output ISBN part value
 - data: output all this data as JSON
 ```
+
+## Benchmark
+Indicative benchmark, nothing super scientific, YMMV.
+
+Running `npm run benchmark` on some Linux machine with Node.Js `v8.12`:
+- isbn2 parses 4960 non-hyphenated ISBNs in around 285ms
+- isbn3 parses 4960 non-hyphenated ISBNs in around 110ms
 
 ## Development
 
