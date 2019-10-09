@@ -183,9 +183,17 @@ Formats:
 ## Benchmark
 Indicative benchmark, nothing super scientific, YMMV.
 
-Running `npm run benchmark` on some Linux machine with Node.Js `v8.12`:
-- isbn2 parses 4960 non-hyphenated ISBNs in around 285ms
-- isbn3 parses 4960 non-hyphenated ISBNs in around 110ms
+Running `npm run benchmark` a few times on some Linux machine with Node.Js `v8.12` produced in average the following mesure:
+
+* isbn3
+- load module: 6ms
+- parse 4960 non-hyphenated ISBNs in around 110ms
+
+* [isbn2](https://www.npmjs.com/package/isbn2) (for comparison)
+- load module: 4.5ms
+- parse 4960 non-hyphenated ISBNs in around 285ms
+
+The difference is mainly due to the [generation of a map of groups in `isbn3`](https://github.com/inventaire/isbn3/blob/master/lib/get_group.js), which takes more time a initialization but makes groups lookups much faster.
 
 ## Development
 
