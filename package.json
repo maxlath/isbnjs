@@ -23,7 +23,9 @@
     "update-groups": "./scripts/update_groups.js",
     "update-dist": "./scripts/update_dist.sh",
     "update-toc": "doctoc README.md",
-    "benchmark": "./benchmark/run.js"
+    "benchmark": "./benchmark/run.js",
+    "prepublishOnly": "./scripts/prepublish.sh",
+    "postpublish": "./scripts/postpublish.sh"
   },
   "files": [
     "isbn.js",
