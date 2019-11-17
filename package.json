@@ -57,5 +57,16 @@
       "it",
       "describe"
     ]
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/inventaire/isbn3/issues"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "keywords": [
+    "ISBN",
+    "parser"
+  ]
 }
