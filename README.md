@@ -207,10 +207,10 @@ npm test
 
 ### Update Groups
 
-To get the latest ISBN groups from [isbn-international.org], use:
+To get the latest ISBN groups from [isbn-international.org](https://isbn-international.org), use:
 
 ```sh
-npm run get-groups
+npm run update-groups
 ```
 
 Results will be saved as a JavaScript object in `./groups.js`
