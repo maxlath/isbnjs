@@ -13,6 +13,12 @@ describe('hyphenate', () => {
     done()
   })
 
+  it('hyphenates ISBN13s with spaces', done => {
+    hyphenate('978 4873113364').should.equal('978-4-87311-336-4')
+    hyphenate('979 1091146135').should.equal('979-10-91146-13-5')
+    done()
+  })
+
   it('does not refuse hyphenated ISBNs', done => {
     hyphenate('4-87311-336-9').should.equal('4-87311-336-9')
     hyphenate('978-4-87311-336-4').should.equal('978-4-87311-336-4')
