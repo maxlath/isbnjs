@@ -29,7 +29,7 @@ Motivations to fork:
 - [Benchmark](#benchmark)
 - [Development](#development)
   - [Test Suite](#test-suite)
-- [Update Groups](#update-groups)
+  - [Update Groups](#update-groups)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -205,19 +205,12 @@ To run the lint/test suite use:
 npm test
 ```
 
-## Update Groups
+### Update Groups
 
-This module updates its ISBN group ranges by checking [isbn-international.org] and saving it in `./lib/groups.js` by running the `update-groups` script.
-If this module gets out of date or if you need the absolute latest ranges, you can update it locally by running the following commands:
+To get the latest ISBN groups from [isbn-international.org], use:
 
-* if you installed with `git clone` and run `npm install` (development mode), you just have to run
 ```sh
 npm run update-groups
 ```
 
-* if you installed with `npm install isbn3`, you can update those groups by running:
-```sh
-cd node_modules/isbn3
-npm install node-fetch xml2js
-npm run update-groups
-```
+Results will be saved as a JavaScript object in `./lib/groups.js`
