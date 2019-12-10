@@ -30,7 +30,8 @@
   "files": [
     "isbn.js",
     "lib",
-    "bin"
+    "bin",
+    "scripts"
   ],
   "engines": {
     "node": ">= 6.4.0"
