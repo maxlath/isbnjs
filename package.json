@@ -44,7 +44,7 @@
     "browserify": "^16.5.0",
     "doctoc": "^1.4.0",
     "mocha": "^6.2.1",
-    "request": "^2.88.0",
+    "node-fetch": "^2.6.0",
     "should": "^13.2.3",
     "standard": "^10.0.2",
     "uglify-js": "^3.6.1",

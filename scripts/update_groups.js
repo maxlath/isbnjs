@@ -1,32 +1,26 @@
 #!/usr/bin/env node
-'use strict'
-
-const request = require('request')
 const xml2js = require('xml2js')
 const fs = require('fs')
 const { promisify } = require('util')
-const get = promisify(request.get)
-const post = promisify(request.post)
 const parseString = promisify(xml2js.parseString)
 const writeFile = promisify(fs.writeFile)
+const fetch = require('node-fetch')
+const { URLSearchParams } = require('url')
 
 const domain = 'https://www.isbn-international.org'
-
 const url = `${domain}/?q=bl_proxy/GetRangeInformations`
-const form = {
+
+const params = new URLSearchParams({
   format: 1,
   language: 'en',
   translatedTexts: 'Printed;Last Change'
-}
+})
 
-const getFileUrl = () => {
-  return post({ url, form })
-  .then(res => {
-    const { body } = res
-    const json = JSON.parse(body)
-    const { filename, value } = json.result
-    return `${domain}/?q=download_range/${value}/${filename}`
-  })
+const getFileUrl = async () => {
+  const res = await fetch(url, { method: 'POST', body: params })
+  const body = await res.json()
+  const { filename, value } = body.result
+  return `${domain}/?q=download_range/${value}/${filename}`
 }
 
 const getGroups = result => {
@@ -70,9 +64,10 @@ console.log('Requesting XML ranges file...')
 getFileUrl()
 .then(fileUrl => {
   console.log(`Downloading ${fileUrl}...`)
-  return get(fileUrl)
+  return fetch(fileUrl)
 })
-.then(res => parseString(res.body))
+.then(res => res.text())
+.then(parseString)
 .then(getGroups)
 .then(formatJsFile)
 .then(fileContent => writeFile('./lib/groups.js', fileContent))
