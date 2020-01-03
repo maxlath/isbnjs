@@ -72,6 +72,60 @@ describe('parse', () => {
     })
   })
 
+  describe('given an ISBN10 with Checksum X', () => {
+    const isbnData = parse('0-304-33376-X')
+
+    it('detects ISBN standard', done => {
+      isbnData.isIsbn10.should.be.true()
+      isbnData.isIsbn13.should.be.false()
+      done()
+    })
+
+    it('includes source', done => {
+      isbnData.source.should.equal('0-304-33376-X')
+      done()
+    })
+
+    it('does not include prefix', done => {
+      should(isbnData.prefix).not.be.ok()
+      done()
+    })
+
+    it('includes group id', done => {
+      isbnData.group.should.equal('0')
+      done()
+    })
+
+    it('includes group name', done => {
+      isbnData.groupname.should.equal('English language')
+      done()
+    })
+
+    it('includes publisher id', done => {
+      isbnData.publisher.should.equal('304')
+      done()
+    })
+
+    it('includes article id', done => {
+      isbnData.article.should.equal('33376')
+      done()
+    })
+
+    it('includes check digits for ISBN10/13', done => {
+      isbnData.check10.should.equal('X')
+      isbnData.check13.should.equal('9')
+      done()
+    })
+
+    it('includes plain and hyphenated versions of ISBN10/13', done => {
+      isbnData.isbn10.should.equal('030433376X')
+      isbnData.isbn10h.should.equal('0-304-33376-X')
+      isbnData.isbn13.should.equal('9780304333769')
+      isbnData.isbn13h.should.equal('978-0-304-33376-9')
+      done()
+    })
+  })
+
   describe('given an ISBN13', () => {
     const isbnData = parse('978-3-642-38745-6')
 

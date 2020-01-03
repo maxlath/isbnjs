@@ -30,4 +30,9 @@ describe('hyphenate', () => {
     should(hyphenate('9784873113360')).not.be.ok()
     done()
   })
+
+  it('hyphenates ISBN10s with Checksum X', done => {
+    hyphenate('030433376X').should.equal('0-304-33376-X')
+    done()
+  })
 })

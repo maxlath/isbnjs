@@ -21,4 +21,9 @@ describe('asIsbn13', () => {
     should(asIsbn13('4873113361')).not.be.ok()
     done()
   })
+
+  it('accepts ISBN10 with Checksum X', done => {
+    asIsbn13('0-304-33376-X').should.equal('9780304333769')
+    done()
+  })
 })

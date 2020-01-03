@@ -168,6 +168,8 @@ Valid ISBN input examples:
 - 978-1491574317
 - isbn:9781491574317
 - 9781-hello-491574317
+- 030433376X
+- 0-304-33376-X
 
 Formats:
 - h: hyphen

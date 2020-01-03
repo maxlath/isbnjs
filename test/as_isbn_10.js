@@ -28,4 +28,9 @@ describe('asIsbn10', () => {
       done()
     })
   })
+
+  it('accepts ISBN10 with Checksum X', done => {
+    asIsbn10('0-304-33376-X').should.equal('030433376X')
+    done()
+  })
 })
