@@ -72,7 +72,7 @@ describe('parse', () => {
     })
   })
 
-  describe('given an ISBN10 with Checksum X', () => {
+  describe('given an ISBN10 with checksum X', () => {
     const isbnData = parse('0-304-33376-X')
 
     it('detects ISBN standard', done => {
