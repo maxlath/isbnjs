@@ -7,8 +7,13 @@ describe('asIsbn10', () => {
     done()
   })
 
-  it('accepts ISBN10 as well', done => {
+  it('accepts ISBN10', done => {
     asIsbn10('4-87311-336-9').should.equal('4873113369')
+    done()
+  })
+
+  it('accepts ISBN10 with checksum X', done => {
+    asIsbn10('0-304-33376-X').should.equal('030433376X')
     done()
   })
 

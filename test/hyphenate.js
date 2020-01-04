@@ -7,6 +7,11 @@ describe('hyphenate', () => {
     done()
   })
 
+  it('hyphenates ISBN10s with checksum X', done => {
+    hyphenate('030433376X').should.equal('0-304-33376-X')
+    done()
+  })
+
   it('hyphenates ISBN13s', done => {
     hyphenate('9784873113364').should.equal('978-4-87311-336-4')
     hyphenate('9791091146135').should.equal('979-10-91146-13-5')
