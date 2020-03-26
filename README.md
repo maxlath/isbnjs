@@ -10,7 +10,7 @@ Please note that this is a fork of [isbn2](https://www.npmjs.com/package/isbn2),
 
 Motivations to fork:
 * modularizing and updating the code for ES6, in a class-less way.
-* improve performance (see [#benchmark])
+* improve performance (see [benchmark](#benchmark))
 
 [Demo](http://inventaire.github.io/isbn3/)
 
