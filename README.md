@@ -6,6 +6,8 @@ An ISBN JavaScript Library.
 
 Please note that this is a fork of [isbn2](https://www.npmjs.com/package/isbn2), which was a fork of [isbn](https://www.npmjs.com/package/isbn) package which was forked from the original [isbnjs](https://code.google.com/p/isbnjs/) project on Google Code.
 
+[Ranges data](https://github.com/inventaire/isbn3/blob/master/lib/groups.js) are generated from [isbn-international.org](https://www.isbn-international.org) data.
+
 Motivations to fork:
 * modularizing and updating the code for ES6, in a class-less way.
 * improve performance (see [#benchmark])
