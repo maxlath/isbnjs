@@ -9,6 +9,8 @@ Please note that this is a fork of [isbn2](https://www.npmjs.com/package/isbn2),
 [Ranges data](https://github.com/inventaire/isbn3/blob/master/lib/groups.js) are generated from [isbn-international.org](https://www.isbn-international.org) data.
 
 Motivations to fork:
+* recover common errors:
+  * ignore bad hyphenization (ex: `978-1933988030`)
 * modularizing and updating the code for ES6, in a class-less way.
 * improve performance (see [benchmark](#benchmark))
 
