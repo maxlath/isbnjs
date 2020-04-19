@@ -17,154 +17,156 @@ describe('parse', () => {
   })
 
   describe('given an ISBN10', () => {
-    const isbnData = parse('0-7356-1967-0')
-
     it('detects ISBN standard', () => {
-      isbnData.isIsbn10.should.be.true()
-      isbnData.isIsbn13.should.be.false()
+      const { isIsbn10, isIsbn13 } = parse('0-7356-1967-0')
+      isIsbn10.should.be.true()
+      isIsbn13.should.be.false()
     })
 
     it('includes source', () => {
-      isbnData.source.should.equal('0-7356-1967-0')
+      parse('0-7356-1967-0').source.should.equal('0-7356-1967-0')
     })
 
     it('does not include prefix', () => {
-      should(isbnData.prefix).not.be.ok()
+      const { prefix } = parse('0-7356-1967-0')
+      should(prefix).not.be.ok()
     })
 
     it('includes group id', () => {
-      isbnData.group.should.equal('0')
+      parse('0-7356-1967-0').group.should.equal('0')
     })
 
     it('includes group name', () => {
-      isbnData.groupname.should.equal('English language')
+      parse('0-7356-1967-0').groupname.should.equal('English language')
     })
 
     it('includes publisher id', () => {
-      isbnData.publisher.should.equal('7356')
+      parse('0-7356-1967-0').publisher.should.equal('7356')
     })
 
     it('includes article id', () => {
-      isbnData.article.should.equal('1967')
+      parse('0-7356-1967-0').article.should.equal('1967')
     })
 
     it('includes check digits for ISBN10/13', () => {
-      isbnData.check10.should.equal('0')
-      isbnData.check13.should.equal('8')
+      const { check10, check13 } = parse('0-7356-1967-0')
+      check10.should.equal('0')
+      check13.should.equal('8')
     })
 
     it('includes plain and hyphenated versions of ISBN10/13', () => {
-      isbnData.isbn10.should.equal('0735619670')
-      isbnData.isbn10h.should.equal('0-7356-1967-0')
-      isbnData.isbn13.should.equal('9780735619678')
-      isbnData.isbn13h.should.equal('978-0-7356-1967-8')
+      const { isbn10, isbn10h, isbn13, isbn13h } = parse('0-7356-1967-0')
+      isbn10.should.equal('0735619670')
+      isbn10h.should.equal('0-7356-1967-0')
+      isbn13.should.equal('9780735619678')
+      isbn13h.should.equal('978-0-7356-1967-8')
     })
   })
 
   describe('given an ISBN10 with checksum X', () => {
-    const isbnData = parse('0-304-33376-X')
-
     it('detects ISBN standard', () => {
-      isbnData.isIsbn10.should.be.true()
-      isbnData.isIsbn13.should.be.false()
+      const { isIsbn10, isIsbn13 } = parse('0-304-33376-X')
+      isIsbn10.should.be.true()
+      isIsbn13.should.be.false()
     })
 
     it('includes source', () => {
-      isbnData.source.should.equal('0-304-33376-X')
+      parse('0-304-33376-X').source.should.equal('0-304-33376-X')
     })
 
     it('does not include prefix', () => {
-      should(isbnData.prefix).not.be.ok()
+      should(parse('0-304-33376-X').prefix).not.be.ok()
     })
 
     it('includes group id', () => {
-      isbnData.group.should.equal('0')
+      parse('0-304-33376-X').group.should.equal('0')
     })
 
     it('includes group name', () => {
-      isbnData.groupname.should.equal('English language')
+      parse('0-304-33376-X').groupname.should.equal('English language')
     })
 
     it('includes publisher id', () => {
-      isbnData.publisher.should.equal('304')
+      parse('0-304-33376-X').publisher.should.equal('304')
     })
 
     it('includes article id', () => {
-      isbnData.article.should.equal('33376')
+      parse('0-304-33376-X').article.should.equal('33376')
     })
 
     it('includes check digits for ISBN10/13', () => {
-      isbnData.check10.should.equal('X')
-      isbnData.check13.should.equal('9')
+      const { check10, check13 } = parse('0-304-33376-X')
+      check10.should.equal('X')
+      check13.should.equal('9')
     })
 
     it('includes plain and hyphenated versions of ISBN10/13', () => {
-      isbnData.isbn10.should.equal('030433376X')
-      isbnData.isbn10h.should.equal('0-304-33376-X')
-      isbnData.isbn13.should.equal('9780304333769')
-      isbnData.isbn13h.should.equal('978-0-304-33376-9')
+      const { isbn10, isbn10h, isbn13, isbn13h } = parse('0-304-33376-X')
+      isbn10.should.equal('030433376X')
+      isbn10h.should.equal('0-304-33376-X')
+      isbn13.should.equal('9780304333769')
+      isbn13h.should.equal('978-0-304-33376-9')
     })
   })
 
   describe('given an ISBN13', () => {
-    const isbnData = parse('978-3-642-38745-6')
-
     describe('with prefix 978', () => {
       it('detects ISBN standard', () => {
-        isbnData.isIsbn10.should.be.false()
-        isbnData.isIsbn13.should.be.true()
+        const { isIsbn10, isIsbn13 } = parse('978-3-642-38745-6')
+        isIsbn10.should.be.false()
+        isIsbn13.should.be.true()
       })
 
       it('includes source', () => {
-        isbnData.source.should.equal('978-3-642-38745-6')
+        parse('978-3-642-38745-6').source.should.equal('978-3-642-38745-6')
       })
 
       it('includes prefix', () => {
-        isbnData.prefix.should.equal('978')
+        parse('978-3-642-38745-6').prefix.should.equal('978')
       })
 
       it('includes group id', () => {
-        isbnData.group.should.equal('3')
+        parse('978-3-642-38745-6').group.should.equal('3')
       })
 
       it('includes group name', () => {
-        isbnData.groupname.should.equal('German language')
+        parse('978-3-642-38745-6').groupname.should.equal('German language')
       })
 
       it('includes publisher id', () => {
-        isbnData.publisher.should.equal('642')
+        parse('978-3-642-38745-6').publisher.should.equal('642')
       })
 
       it('includes article id', () => {
-        isbnData.article.should.equal('38745')
+        parse('978-3-642-38745-6').article.should.equal('38745')
       })
 
       it('includes check digits for ISBN10/13', () => {
-        isbnData.check10.should.equal('4')
-        isbnData.check13.should.equal('6')
+        const { check10, check13 } = parse('978-3-642-38745-6')
+        check10.should.equal('4')
+        check13.should.equal('6')
       })
 
       it('includes plain and hyphenated versions of ISBN10/13', () => {
-        isbnData.isbn10.should.equal('3642387454')
-        isbnData.isbn10h.should.equal('3-642-38745-4')
-        isbnData.isbn13.should.equal('9783642387456')
-        isbnData.isbn13h.should.equal('978-3-642-38745-6')
+        const { isbn10, isbn10h, isbn13, isbn13h } = parse('978-3-642-38745-6')
+        isbn10.should.equal('3642387454')
+        isbn10h.should.equal('3-642-38745-4')
+        isbn13.should.equal('9783642387456')
+        isbn13h.should.equal('978-3-642-38745-6')
       })
     })
 
     describe('with prefix 979', () => {
-      const isbnData = parse('9791091146135')
-
       it('includes prefix', () => {
-        isbnData.prefix.should.equal('979')
+        parse('9791091146135').prefix.should.equal('979')
       })
 
       it('includes group id', () => {
-        isbnData.group.should.equal('10')
+        parse('9791091146135').group.should.equal('10')
       })
 
       it('includes group name', () => {
-        isbnData.groupname.should.equal('France')
+        parse('9791091146135').groupname.should.equal('France')
       })
     })
   })
