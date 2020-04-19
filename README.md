@@ -16,6 +16,8 @@ Motivations to fork:
 
 [Demo](http://inventaire.github.io/isbn3/)
 
+[![NPM](https://nodei.co/npm/isbn3.png?stars&downloads&downloadRank)](https://npmjs.com/package/isbn3/)
+
 ## Summary
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
