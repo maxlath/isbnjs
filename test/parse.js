@@ -107,6 +107,12 @@ describe('parse', () => {
       check13.should.equal('9')
     })
 
+    it('correct invalid check digits', () => {
+      const { check10, isbn10h } = parse('0-304-33376-0')
+      check10.should.equal('X')
+      isbn10h.should.equal('0-304-33376-0')
+    })
+
     it('includes plain and hyphenated versions of ISBN10/13', () => {
       const { isbn10, isbn10h, isbn13, isbn13h } = parse('0-304-33376-X')
       isbn10.should.equal('030433376X')
@@ -151,6 +157,12 @@ describe('parse', () => {
       it('includes check digits for ISBN10/13', () => {
         const { check10, check13 } = parse('978-3-642-38745-6')
         check10.should.equal('4')
+        check13.should.equal('6')
+      })
+
+      it('correct invalid check digits', () => {
+        const { isbn13h, check13 } = parse('978-3-642-38745-5')
+        isbn13h.should.equal('978-3-642-38745-6')
         check13.should.equal('6')
       })
 
