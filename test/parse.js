@@ -3,9 +3,9 @@ const { parse } = require('../isbn')
 
 describe('parse', () => {
   it('returns an object with all the data when valid', () => {
-    parse('9791091146135').isValid.should.be.true()
-    parse('979-1091146135').isValid.should.be.true()
-    parse('979 1091146135').isValid.should.be.true()
+    parse('9791091146135').should.be.ok()
+    parse('979-1091146135').should.be.ok()
+    parse('979 1091146135').should.be.ok()
   })
 
   it('returns null for invalid ISBNs', () => {
@@ -14,6 +14,13 @@ describe('parse', () => {
     should(parse('0-00000-0000-0')).not.be.ok()
     should(parse('00000000000000000')).not.be.ok()
     should(parse('9788184890261')).not.be.ok()
+  })
+
+  it('should return consistent hyphenatization', () => {
+    const a = parse('978-88-3282-181-9')
+    const b = parse('978-88-328-2181-9')
+    a.isbn13h.should.equal(b.isbn13h)
+    a.isbn10h.should.equal(b.isbn10h)
   })
 
   describe('given an ISBN10', () => {
