@@ -32,6 +32,7 @@ Motivations to fork:
 - [Development](#development)
   - [Test Suite](#test-suite)
   - [Update Groups](#update-groups)
+- [See also](#see-also)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -218,3 +219,6 @@ npm run update-groups
 ```
 
 Results will be saved as a JavaScript object in `./lib/groups.js`
+
+## See also
+* [isbn-groups](https://www.npmjs.com/package/isbn-groups): infer a language from an ISBN group
