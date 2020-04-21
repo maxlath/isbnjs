@@ -25,15 +25,15 @@ const getFileUrl = async () => {
 
 const getGroups = result => {
   const prefixesData = result.ISBNRangeMessage.RegistrationGroups[0].Group
-  return prefixesData
-    .reduce((index, prefixData) => {
-      const groupKey = prefixData.Prefix[0]
-      index[groupKey] = {
-        name: prefixData.Agency[0],
-        ranges: groupRanges(prefixData)
-      }
-      return index
-    }, {})
+  const groups = {}
+  return prefixesData.forEach(prefixData => {
+    const groupKey = prefixData.Prefix[0]
+    groups[groupKey] = {
+      name: prefixData.Agency[0],
+      ranges: groupRanges(prefixData)
+    }
+  })
+  return groups
 }
 
 const groupRanges = prefixData => {
