@@ -32,8 +32,8 @@ format = format || '13h'
 
 const source = isbn
 isbn = isbn.replace(/[^\dX]/g, '')
-const ISBN = require('../isbn')
-const data = ISBN.parse(isbn)
+const parse = require('../lib/parse')
+const data = parse(isbn)
 
 if (data) {
   if (format === '13') console.log(data.isbn13)

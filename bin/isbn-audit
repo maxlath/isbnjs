@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+const [ source ] = process.argv.slice(2)
+const audit = require('../lib/audit')
+const data = audit(source)
+console.log(JSON.stringify(data))

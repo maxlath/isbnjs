@@ -15,7 +15,8 @@
   },
   "main": "./isbn.js",
   "bin": {
-    "isbn": "./bin/isbn"
+    "isbn": "./bin/isbn",
+    "isbn-audit": "./bin/isbn-audit"
   },
   "scripts": {
     "test": "mocha",
