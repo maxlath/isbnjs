@@ -2,17 +2,17 @@ const parse = require('./lib/parse')
 
 module.exports = {
   parse,
-  hyphenate: function (val) {
+  hyphenate: val => {
     const data = parse(val)
     if (!data) return null
     return data.isIsbn13 ? data.isbn13h : data.isbn10h
   },
-  asIsbn13: function (val, hyphen) {
+  asIsbn13: (val, hyphen) => {
     const data = parse(val)
     if (!data) return null
     return hyphen ? data.isbn13h : data.isbn13
   },
-  asIsbn10: function (val, hyphen) {
+  asIsbn10: (val, hyphen) => {
     const data = parse(val)
     if (!data) return null
     // Return null for cases where it shouldn't map to an ISBN 10

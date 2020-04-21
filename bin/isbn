@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var [ isbn, format ] = process.argv.slice(2)
+let [ isbn, format ] = process.argv.slice(2)
 
 const exit = (code, message) => {
   if (code === 0) console.log(message)
