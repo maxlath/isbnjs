@@ -37,4 +37,12 @@ describe('audit', () => {
     audit('9791090648525').clues.should.deepEqual(clues)
     audit('979-1090648525').clues.should.deepEqual(clues)
   })
+
+  it('should still return data when no candidate is found', () => {
+    audit('9782070375165').should.deepEqual({
+      source: '9782070375165',
+      validIsbn: true,
+      clues: []
+    })
+  })
 })
