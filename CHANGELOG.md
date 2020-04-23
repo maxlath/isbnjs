@@ -1,7 +1,9 @@
 $# CHANGELOG
 *versions follow [SemVer](http://semver.org)*
 
-## 1.1.0 - 2019-10-08
+## 1.1.0- 2020-04-24
+* Add [`audit`](https://github.com/inventaire/isbn3#audit) function and corresponding [`isbn-audit`](https://github.com/inventaire/isbn3#isbn-audit) CLI command
+* Add [`isbn-checksum`](https://github.com/inventaire/isbn3#isbn-checksum) CLI command
 * Add dist files `./dist/isbn.js` and `./dist/isbn.min.js`, both being browserified ES5 versions of the module
 
 ## 1.0.0 - 2019-10-07
