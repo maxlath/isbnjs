@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 let [ isbn, format ] = process.argv.slice(2)
 
-const exit = (code, message) => {
-  if (code === 0) console.log(message)
-  else console.error(message)
+const output = (message, code = 0) => {
+  if (code === 0) process.stdout.write(message)
+  else process.stderr.write(message)
   process.exit(code)
 }
 
 if (!isbn || isbn.length === 0) {
-  exit(0, `isbn <isbn> <format>
+  output(`isbn <isbn> <format>
 
 Valid ISBN input examples:
 - 9781491574317
@@ -32,27 +32,26 @@ format = format || '13h'
 
 const source = isbn
 isbn = isbn.replace(/[^\dX]/g, '')
-const ISBN = require('../isbn')
-const data = ISBN.parse(isbn)
-
+const parse = require('../lib/parse')
+const data = parse(isbn)
 if (data) {
-  if (format === '13') console.log(data.isbn13)
-  else if (format === '10') console.log(data.isbn10)
-  else if (format === '13h') console.log(data.isbn13h)
-  else if (format === '10h') console.log(data.isbn10h)
-  else if (data[format]) console.log(data[format])
+  if (format === '13') output(data.isbn13)
+  else if (format === '10') output(data.isbn10)
+  else if (format === '13h') output(data.isbn13h)
+  else if (format === '10h') output(data.isbn10h)
+  else if (data[format]) output(data[format])
   else if (format === 'h') {
-    if (data.isIsbn13) console.log(data.isbn13h)
-    else console.log(data.isbn10h)
+    if (data.isIsbn13) output(data.isbn13h)
+    else output(data.isbn10h)
   } else if (format === 'n') {
-    if (data.isIsbn13) console.log(data.isbn13)
-    else console.log(data.isbn10)
-  } else if (format === 'data') {
+    if (data.isIsbn13) output(data.isbn13)
+    else output(data.isbn10)
+  } else if (format === 'data' || format === 'd') {
     data.source = source
-    console.log(JSON.stringify(data, null, 2))
+    output(JSON.stringify(data, null, 2) + '\n')
   } else {
-    exit(1, 'unknown format')
+    output('unknown format', 1)
   }
 } else {
-  exit(1, 'invalid ISBN')
+  output('invalid ISBN', 1)
 }

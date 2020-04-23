@@ -1,7 +1,10 @@
 const parse = require('./lib/parse')
+const audit = require('./lib/audit')
 
 module.exports = {
   parse,
+  audit,
+
   hyphenate: val => {
     const data = parse(val)
     if (!data) return null

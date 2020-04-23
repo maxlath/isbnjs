@@ -30,8 +30,12 @@ Motivations to fork:
   - [asIsbn13](#asisbn13)
   - [asIsbn10](#asisbn10)
   - [hyphenate](#hyphenate)
+  - [audit](#audit)
   - [groups](#groups)
 - [CLI](#cli)
+  - [isbn](#isbn)
+  - [isbn-audit](#isbn-audit)
+  - [isbn-checksum](#isbn-checksum)
 - [Benchmark](#benchmark)
 - [Development](#development)
   - [Test Suite](#test-suite)
@@ -152,6 +156,47 @@ ISBN.asIsbn10('978-4-87311-336-4', true) // 4-87311-336-9
 ISBN.hyphenate('9784873113364')          // 978-4-87311-336-4
 ```
 
+### audit
+Get clues for possible mistake in an ISBN.
+
+For instance, if in your data, a French edition has an ISBN-13 starting by `978-1-0`, which would make it part of an English language groups, it could be that somewhere a prefix mistake was made and the ISBN actually starts by `979-10` (a French group). This is typically the case when an 979-prefix ISBN-13 was converted to an ISBN-10 (which is wrong as 979-prefixed ISBNs can't have ISBN-10), and then re-converted to an ISBN-13 with the 978 prefix. This is soooo wrong, but data is a dirty place I'm afraid.
+```js
+ISBN.audit('9784873113364')
+// {
+//   "source": "9784873113364",
+//   "validIsbn": true,
+//   "groupname": "Japan",
+//   "clues": []
+// }
+
+ISBN.audit('9781090648525')
+// {
+//   "source": "9781090648525",
+//   "validIsbn": true,
+//   "groupname": "English language",
+//   "clues": [
+//     {
+//       "message": "possible prefix error",
+//       "candidate": "979-10-90648-52-4",
+//       "groupname": "France"
+//     }
+//   ]
+// }
+
+ISBN.audit('978-1-0906-4852-4')
+// {
+//   "source":"978-1-0906-4852-4",
+//   "validIsbn":false,
+//   "clues":[
+//     {
+//       "message":"checksum hints different prefix",
+//       "candidate":"979-10-90648-52-4",
+//       "groupname":"France"
+//     }
+//   ]
+// }
+```
+
 ### groups
 ```js
 ISBN.groups['978-99972']
@@ -162,10 +207,12 @@ ISBN.groups['978-99972']
 ```
 
 ## CLI
-Installing the module globally (`npm install -g isbn3`) will make an `isbn` command available from your terminal.
-If you installed locally (`npm install isbn3`), the command can be accessed from the project directory at `./node_modules/.bin/isbn`
 
-So, from the terminal:
+Installing the module globally (`npm install -g isbn3`) will make the following commands available from your terminal.
+
+If you installed locally (`npm install isbn3`), the command can be accessed from the project directory at `./node_modules/.bin`, or just by their filename in npm scripts.
+
+### isbn
 ```sh
 isbn <isbn> <format>
 
@@ -187,6 +234,62 @@ Formats:
 - 10h: ISBN-10 with hyphen
 - prefix, group, publisher, article, check, check10, check13: output ISBN part value
 - data: output all this data as JSON
+```
+
+### isbn-audit
+Return the results of the [audit](#audit) function as JSON
+
+```sh
+isbn-audit <isbn>
+```
+
+This command also accepts a stream of newline-delimited isbns and outputs a stream of newline-delimited JSON, where each line corresponds to an ISBN that is either invalid or that could be suspect of being malformed. Valid ISBN with no possible malformation detected don't return anything.
+echo '
+9784873113364
+9781090648525
+978-1-0906-4852-4
+' | isbn-audit > audit_data.ndjson
+
+### isbn-checksum
+Return the checksum that would correspond to the passed input (ignoring its current checksum if any).
+
+```sh
+isbn-checksum <isbn>
+
+isbn-checksum 978-4-87311-336-4
+# {
+#   "input": "978-4-87311-336-4",
+#   "checksumCalculatedFrom": "978487311336",
+#   "checksum": "4",
+#   "isbn": "978-4-87311-336-4"
+# }
+
+isbn-checksum 978-4-87311-336-1
+# {
+#   "input": "978-4-87311-336-1",
+#   "checksumCalculatedFrom": "978487311336",
+#   "checksum": "4",
+#   "isbn": "978-4-87311-336-4"
+# }
+
+isbn-checksum 978-4-87311-336
+# {
+#   "input": "978-4-87311-336",
+#   "checksumCalculatedFrom": "978487311336",
+#   "checksum": "4",
+#   "isbn": "978-4-87311-336-4"
+# }
+
+isbn-checksum 978487311336
+# {
+#   "input": "978487311336",
+#   "checksumCalculatedFrom": "978487311336",
+#   "checksum": "4",
+#   "isbn": "978-4-87311-336-4"
+# }
+
+
+isbn-checksum 978-4-87311-336-1
 ```
 
 ## Benchmark
