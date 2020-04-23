@@ -14,5 +14,5 @@ if (option === 'c') {
   process.stdout.write(checksum)
 } else {
   const data = { input, checksumCalculatedFrom: normalized, checksum, isbn: isbn13h }
-  process.stdout.write(JSON.stringify(data))
+  process.stdout.write(JSON.stringify(data) + '\n')
 }
