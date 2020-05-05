@@ -14,6 +14,7 @@ describe('parse', () => {
     should(parse('0-00000-0000-0')).not.be.ok()
     should(parse('00000000000000000')).not.be.ok()
     should(parse('9788184890261')).not.be.ok()
+    should(parse('4036526651248')).not.be.ok()
   })
 
   it('should return consistent hyphenatization', () => {
