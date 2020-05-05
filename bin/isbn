@@ -33,6 +33,7 @@ format = format || '13h'
 const source = isbn
 isbn = isbn.replace(/[^\dX]/g, '')
 const parse = require('../lib/parse')
+const audit = require('../lib/audit')
 const data = parse(isbn)
 if (data) {
   if (format === '13') output(data.isbn13)
@@ -49,6 +50,8 @@ if (data) {
   } else if (format === 'data' || format === 'd') {
     data.source = source
     output(JSON.stringify(data, null, 2) + '\n')
+  } else if (format === 'audit' || format === 'a') {
+    output(JSON.stringify(audit(isbn), null, 2) + '\n')
   } else {
     output('unknown format', 1)
   }
