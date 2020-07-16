@@ -26,7 +26,7 @@ const getFileUrl = async () => {
 const getGroups = result => {
   const prefixesData = result.ISBNRangeMessage.RegistrationGroups[0].Group
   const groups = {}
-  return prefixesData.forEach(prefixData => {
+  prefixesData.forEach(prefixData => {
     const groupKey = prefixData.Prefix[0]
     groups[groupKey] = {
       name: prefixData.Agency[0],
