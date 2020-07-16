@@ -32,9 +32,19 @@ jobs:
           message: 'Auto-update groups'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: npm version patch
-      - name: publish to npm
-        uses: pascalgn/npm-publish-action@4f4bf159e299f65d21cd1cbd96fc5d53228036df
+      - run: |
+          echo 'Increment patch version number...'
+          npm version patch
+          echo 'Pushing commits to repo...'
+          git push origin master
+          echo 'Pushing tags to repo...'
+          git push origin master --tags
+          echo 'Setup .npmrc...'
+          echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" > .npmrc
+          echo 'Publish on NPM...'
+          npm publish
+          echo 'Done!'
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this as is, it's automatically generated
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} # You need to set this in your repo settings
