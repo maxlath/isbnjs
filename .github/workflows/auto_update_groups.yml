@@ -1,12 +1,9 @@
 name: Update groups and publish
 
-# on:
-#   schedule:
-#     - cron:  '*/5 * * * *'
 on:
-  push:
-    branches:
-      - master
+  schedule:
+    # Every first of the month at 10:00
+    - cron:  '0 10 1 * *'
 
 jobs:
   test:
