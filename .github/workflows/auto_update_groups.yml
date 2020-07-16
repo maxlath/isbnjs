@@ -1,8 +1,12 @@
 name: Update groups and publish
 
+# on:
+#   schedule:
+#     - cron:  '*/5 * * * *'
 on:
-  schedule:
-    - cron:  '*/5 * * * *'
+  push:
+    branches:
+      - master
 
 jobs:
   test:
@@ -10,6 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v1
+      - run: npm ci --no-audit
       - run: npm test
   publish:
     needs: test
@@ -17,6 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v1
+      - run: npm ci --no-audit
       - run: npm run update-groups
       # See https://github.com/marketplace/actions/add-commit
       - uses: EndBug/add-and-commit@v4
