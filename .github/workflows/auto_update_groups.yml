@@ -1,0 +1,33 @@
+name: Update groups and publish
+on:
+  schedule:
+    - cron:  '*/5 * * * *'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+      - run: npm test
+  publish:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+      - run: npm run update-groups
+      # See https://github.com/marketplace/actions/add-commit
+      - uses: EndBug/add-and-commit@v4
+        with:
+          author_name: Auto-update groups
+          author_email: devnull@inventaire.io
+          message: 'Auto-update groups'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: npm version patch
+      - name: publish to npm
+        uses: pascalgn/npm-publish-action@4f4bf159e299f65d21cd1cbd96fc5d53228036df
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this as is, it's automatically generated
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} # You need to set this in your repo settings
