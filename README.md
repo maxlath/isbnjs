@@ -8,15 +8,18 @@ Please note that this is a fork of [isbn2](https://www.npmjs.com/package/isbn2),
 
 [Ranges data](https://github.com/inventaire/isbn3/blob/master/lib/groups.js) are generated from [isbn-international.org](https://www.isbn-international.org) data.
 
-Motivations to fork:
+Added features compared to `isbn2`:
 * recover common errors:
   * ignore bad hyphenization (ex: `978-1933988030`)
 * modularizing and updating the code for ES6, in a class-less way.
 * improve performance (see [benchmark](#benchmark))
+* [Auto-update groups data](https://github.com/inventaire/isbn3/issues/5#issuecomment-667523086) every month
 
 [Demo](http://inventaire.github.io/isbn3/)
 
 [![NPM](https://nodei.co/npm/isbn3.png?stars&downloads&downloadRank)](https://npmjs.com/package/isbn3/)
+
+![Auto-update groups data](https://github.com/inventaire/isbn3/workflows/Update%20groups%20and%20publish/badge.svg)
 
 ## Summary
 
@@ -317,15 +320,18 @@ To run the lint/test suite use:
 npm test
 ```
 
-### Update Groups
+### Update Groups data
 
-To get the latest ISBN groups from [isbn-international.org], use:
+[Groups data](https://github.com/inventaire/isbn3/blob/master/lib/groups.js) are fetched from isbn-international.org, and are critical to how this lib parses ISBNs. Unfortunately, those groups aren't fixed once for all, and we need to update those data periodically.
+
+Once a month, a [CI job](https://github.com/inventaire/isbn3/blob/master/.github/workflows/auto_update_groups_data.yml) takes care of updating ISBN groups data and publishing a patch version:
+![Auto-update groups data](https://github.com/inventaire/isbn3/workflows/Update%20groups%20and%20publish/badge.svg)
+
+To get the latest data, you thus just need to update to the latest version (beware of [breaking changes](https://github.com/inventaire/isbn3/blob/master/CHANGELOG.md) if that makes you switch to a new major version though):
 
 ```sh
-npm run update-groups
+npm install isbn3@latest
 ```
-
-Results will be saved as a JavaScript object in `./lib/groups.js`
 
 ## See also
 * [isbn-groups](https://www.npmjs.com/package/isbn-groups): infer a language from an ISBN group
