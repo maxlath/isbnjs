@@ -1,4 +1,4 @@
-name: Update groups and publish
+name: Auto-update groups data
 
 on:
   schedule:
