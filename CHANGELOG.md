@@ -1,4 +1,4 @@
-$# CHANGELOG
+# CHANGELOG
 *versions follow [SemVer](http://semver.org)*
 
 ## 1.1.0- 2020-04-24
