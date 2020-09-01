@@ -29,7 +29,7 @@ const getGroups = result => {
   prefixesData.forEach(prefixData => {
     const groupKey = prefixData.Prefix[0]
     groups[groupKey] = {
-      name: prefixData.Agency[0],
+      name: prefixData.Agency[0].trim(),
       ranges: groupRanges(prefixData)
     }
   })
