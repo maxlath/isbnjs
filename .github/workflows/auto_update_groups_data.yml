@@ -3,7 +3,7 @@ name: Auto-update groups data
 on:
   schedule:
     # Every first of the month at 10:00
-    - cron:  '0 10 1 * *'
+    - cron:  '0 10 1 1,5,9 *'
 
 jobs:
   test:
